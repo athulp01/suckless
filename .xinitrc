@@ -32,9 +32,10 @@ if [ -f "$usermodmap" ]; then
 fi
 
 # start some nice programs
-compton
-nitrogen --restore
-xautolock -time 5 -locker slock -corners ---- -secure -notify 30 -notifier "notify-send -u critical -t 10000 'LOCKING in 30s'" -detectsleep
+compton&
+nitrogen --restore &
+xautolock -time 5 -locker slock -corners ---- -secure -notify 30 -notifier "notify-send -u critical -t 10000 'LOCKING in 30s'" -detectsleep &
+slstatus&
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
   [ -x "$f" ] && . "$f"
